@@ -13,13 +13,13 @@ void sleep(unsigned int mseconds)
 
 
 
-struct Room1
+struct Room
 {
-	char* name = "Oblivion";
-	char* onceDescription = "Thoughts: You are not alone, you never were.. Bump.. Bump.. (Heart Pounds). My mind's \nstill. My breath's steady. I feel boundless. ..Where am I? Who I am?";
-	char* Description = "Facts: You are floating in the void, everything is dark here, you are at awe with the \nnothingness. Take a look around..";
+	char* name; 
+	char* onceDescription;
+	char* Description;
 
-}room1;
+}room1,room2;
 
 
 struct Answers
@@ -29,10 +29,10 @@ struct Answers
 }ans;
 
 
-void writeRoom1(Room1* room)
+void PrintRoom(Room* room)
 {
 
-	Room1* roomCopy;
+	Room* roomCopy;
 	roomCopy = room;
 	roomCopy->name = room->name;
 
@@ -48,14 +48,9 @@ void writeRoom1(Room1* room)
 	roomCopy->onceDescription = room->onceDescription;
 
 
-	for (; *room->name != '\0'; room->name++)
-	{
-		printf("%c", *room->name);
-		sleep(100);
-	}
 
 
-	/*
+	
 
 	for (; *room->onceDescription != '\0'; room->onceDescription++)
 	{
@@ -80,20 +75,33 @@ void writeRoom1(Room1* room)
 	printf("\n");
 
 
-	*/
+	
 
 }
 
-
+void Init()
+{
+	room1.name = "Oblivion";
+	room1.onceDescription = "Thoughts: You are not alone, you never were.. Bump.. Bump.. (Heart Pounds). My mind's \nstill. My breath's steady. I feel boundless. ..Where am I? Who I am?";
+	room1.Description = "Facts: You are floating in the void, everything is dark here, you are at awe with the nothingness. Take a look around..";
+}
 
 
 int main()
 {
 
 	
-	Room1* ptr_room1 = &room1;
+	Room* ptr_room1 = &room1;
 
-	writeRoom1(ptr_room1);
+	Init();
+
+
+	PrintRoom(ptr_room1);
+
+
+
+
+
 
 	getchar();
 	return 0;
