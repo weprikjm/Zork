@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
-#include "p2SString.h"
+#include "DataStructures/p2SString.h"
 
 #define MAX_SIZE_COMMAND 1000
 
@@ -25,13 +25,6 @@ void sleep(unsigned int mseconds)
 	while (goal > clock());
 }
 
-struct input
-{
-	char* nextMessage;
-
-}input;
-
-
 struct Exit 
 {
 	char* name;
@@ -54,7 +47,7 @@ struct Room
 
 struct Answers
 {
-	char* Dunno = "I can't understand your thought process.";
+	char* Dunno = "I don't understand your brain.";
 	char* Cant = "I'm afraid I can't do that.";
 }ans;
 
@@ -103,7 +96,7 @@ void PrintRoom(Room* room)
 	room->Description = roomCopy->Description;
 
 	printf("\n");
-	printf("\n");
+
 
 	
 
@@ -111,68 +104,37 @@ void PrintRoom(Room* room)
 
 void Init()
 {
-
-	input.nextMessage = "\\-- What's next? ";
-
-
 	room1.name = "Oblivion";
 	room1.onceDescription = "Thoughts: You are not alone, you never were.. Bump.. Bump.. (Heart Pounds). My mind's \nstill. My breath's steady. I feel boundless. ..Where am I? Who I am?";
 	room1.Description = "Facts: You are floating in the void, everything is dark here, you are at awe with the nothingness. Take a look around..";
 	room1.exit.name = "Portal";
 	room1.exit.description = "You can see a tiny spot of light in the distance. It's glowing in blue. It's right above you at about several thousands of km";
 	room1.exit.orientation = UP;
-
-	room2.name = "next room";
-	room2.onceDescription = "Under Construction";
-	room2.Description = "Under Construction";
-	room2.exit.name = "exit";
-	room2.exit.description = "Under Construction";
-	room2.exit.orientation = WEST;
-
-
-
 }
 
 
 int main()
 {
 
-	p2SString command;
-	char temp[101];
+	p2SString command;;
 	Room* ptr_room1 = &room1;
-	Room* ptrTMP_room1 = ptr_room1;
 
-	Room* ptr_room2 = &room2;
-	Room* ptrTMP_room2 = ptr_room2;
-
-
-	bool end = true;
 	Init();
 
 
-	PrintRoom(ptrTMP_room1);
+	//PrintRoom(ptr_room1);
 
-	while (end)
+	while (command != "exit" || command != "Exit" || command != "quit" || command != "Quit")
 	{
-		printf("%s", input.nextMessage);
-		command = fgets(temp, 5, stdin);
-
-
-
-
-
-
-		if (command == "exit" || command == "Exit" || command == "quit" || command == "Quit")
-			end = false;
-
-
-
+		scanf_s("%s", MAX_SIZE_COMMAND, command);
+		printf("%s", *command);
+		
 	}
 
 
 
-	
-	//getchar();
+	delete[] command;
+	getchar();
 	return 0;
 }
 
