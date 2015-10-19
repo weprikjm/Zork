@@ -2,6 +2,11 @@
 #include <time.h>
 #include <iostream>
 #include "p2SString.h"
+#include "entity.h"
+#include "exit.h"
+#include "room.h"
+#include "answers.h"
+#include "input.h"s
 
 #define MAX_SIZE_COMMAND 1000
 
@@ -19,44 +24,18 @@ enum direction
 	BACKWARDS
 };
 
+
+
 void sleep(unsigned int mseconds)
 {
 	clock_t goal = mseconds + clock();
 	while (goal > clock());
 }
 
-struct input
-{
-	char* nextMessage;
-
-}input;
 
 
-struct Exit 
-{
-	char* name;
-	char* description;
-	direction orientation;
-
-}exitRoom1, exitRoom2;
 
 
-struct Room
-{
-	char* name; 
-	char* onceDescription;
-	char* Description;
-	Exit exit;
-
-
-}room1,room2;
-
-
-struct Answers
-{
-	char* Dunno = "I can't understand your thought process.";
-	char* Cant = "I'm afraid I can't do that.";
-}ans;
 
 
 void PrintRoom(Room* room)
@@ -115,23 +94,24 @@ void Init()
 	input.nextMessage = "\\-- What's next? ";
 
 
-	room1.name = "Oblivion";
-	room1.onceDescription = "Thoughts: You are not alone, you never were.. Bump.. Bump.. (Heart Pounds). My mind's \nstill. My breath's steady. I feel boundless. ..Where am I? Who I am?";
-	room1.Description = "Facts: You are floating in the void, everything is dark here, you are at awe with the nothingness. Take a look around..";
-	room1.exit.name = "Portal";
-	room1.exit.description = "You can see a tiny spot of light in the distance. It's glowing in blue. It's right above you at about several thousands of km";
-	room1.exit.orientation = UP;
+	roomConsciousnessEntrance.name = "Oblivion";
+	roomConsciousnessEntrance.onceDescription = "Thoughts: You are not alone, you never were.. Bump.. Bump.. (Heart Pounds). My mind's \nstill. My breath's steady. I feel boundless. ..Where am I? Who I am?";
+	roomConsciousnessEntrance.Description = "Facts: You are floating in the void, everything is dark here, you are at awe with the nothingness. Take a look around..";
+	roomConsciousnessEntrance.exit.name = "Portal";
+	roomConsciousnessEntrance.exit.description = "You can see a tiny spot of light in the distance. It's glowing in blue. It's right above you at about several thousands of km";
+	roomConsciousnessEntrance.exit.orientation = UP;
 
-	room2.name = "next room";
-	room2.onceDescription = "Under Construction";
-	room2.Description = "Under Construction";
-	room2.exit.name = "exit";
-	room2.exit.description = "Under Construction";
-	room2.exit.orientation = WEST;
+	roomBlueLight.name = "next room";
+	roomBlueLight.onceDescription = "Under Construction";
+	roomBlueLight.Description = "Under Construction";
+	roomBlueLight.exit.name = "exit";
+	roomBlueLight.exit.description = "Under Construction";
+	roomBlueLight.exit.orientation = WEST;
 
 
 
 }
+
 
 
 int main()
@@ -139,32 +119,42 @@ int main()
 
 	p2SString command;
 	char temp[101];
-	Room* ptr_room1 = &room1;
-	Room* ptrTMP_room1 = ptr_room1;
+	Room* ptr_roomConsciousnessEntrance = &roomConsciousnessEntrance;
+	Room* ptrTMP_roomConsciousnessEntrance = ptr_roomConsciousnessEntrance;
 
-	Room* ptr_room2 = &room2;
+	Room* ptr_room2 = &roomBlueLight;
 	Room* ptrTMP_room2 = ptr_room2;
+	
+	bool InSameRoom = false;
 
 
 	bool end = true;
 	Init();
 
+	Room* CurrentRoom;
+	CurrentRoom = ptr_roomConsciousnessEntrance;
 
-	PrintRoom(ptrTMP_room1);
 
 	while (end)
 	{
-		printf("%s", input.nextMessage);
-		command = fgets(temp, 5, stdin);
+
+		PrintRoom(CurrentRoom);
+		InSameRoom = true;
+			while(InSameRoom)
+			{ 
+				printf("%s", input.nextMessage);
+				command = fgets(temp, 5, stdin);
+
+				CurrentRoom->CheckCommand(command);
+
+				if (command == "exit" || command == "Exit" || command == "quit" || command == "Quit")
+					end = false;
 
 
 
 
-
-
-		if (command == "exit" || command == "Exit" || command == "quit" || command == "Quit")
-			end = false;
-
+				InSameRoom = false;
+			}
 
 
 	}
