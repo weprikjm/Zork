@@ -5,10 +5,7 @@
 
 //  NULL just in case ----------------------
 
-#ifdef NULL
-#undef NULL
-#endif
-#define NULL  0
+
 
 // Deletes a buffer
 #define RELEASE( x ) \
@@ -51,26 +48,11 @@ template <class VALUE_TYPE> void SWAP(VALUE_TYPE& a, VALUE_TYPE& b)
 #define MID_STR		255
 #define HUGE_STR	8192
 
-// Joins a path and file
-inline const char* const PATH(const char* folder, const char* file)
-{
-	static char path[MID_STR];
-	sprintf_s(path, MID_STR, "%s/%s", folder, file);
-	return path;
-}
 
-// Conf
 
-// TODO 2: move all those defines to data from the config.xml file
-#define R_FULLSCREEN false
-#define R_BORDERLESS false
-#define R_RESIZABLE false
-#define R_FULLSCR_WINDOWED false
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-//#define WINDOW_TITLE "My Game"
-#define SCALE 1
-#define ORGANIZATION "My Awesome Studio"
-#define APPNAME "My cool game"
+
+
+
+#define TOTAL_ROOMS_GAME	10
 
 #endif

@@ -64,17 +64,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="answers.cpp" />
+    <ClCompile Include="DataStructures\p2Log.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="room.cpp" />
+    <ClCompile Include="RoomManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answers.h" />
+    <ClInclude Include="DataStructures\p2Defs.h" />
+    <ClInclude Include="DataStructures\p2List.h" />
+    <ClInclude Include="DataStructures\p2Log.h" />
+    <ClInclude Include="DataStructures\p2SString.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="exit.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
+    <ClInclude Include="RoomManager.h" />
+    <ClInclude Include="RoomRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

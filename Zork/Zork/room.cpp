@@ -1,6 +1,6 @@
 #include "room.h"
 
-bool Room::CheckCommand(char* command)
+answers Room::CheckCommand(const char* command)
 {
 
 

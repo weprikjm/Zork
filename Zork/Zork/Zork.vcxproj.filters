@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="DataStructures">
+      <UniqueIdentifier>{f4eddbd8-5cdb-4f7f-bd39-cae405e268e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,25 +27,58 @@
     <ClCompile Include="room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="answers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\p2Log.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="entity.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="exit.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="room.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="answers.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="answers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\p2List.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\p2Log.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\p2SString.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\p2Defs.h">
+      <Filter>DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
