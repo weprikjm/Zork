@@ -1,8 +1,10 @@
 #include "answers.h"
 
 
-answers::answers()
+Answers::Answers(const char* _answer, const char* _command)
 {
-	 Dunno->create("I can't understand your thought process.");
-	 Cant->create("I'm afraid I can't do that.");
+	Answer = new p2SString;
+	command = new p2SString;
+	Answer->create(_answer);
+	command->create(_command);
 }

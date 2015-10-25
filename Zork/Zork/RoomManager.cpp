@@ -1,5 +1,7 @@
 #include "RoomManager.h"
+#include "iostream"
 
+#include "room.h"
 
 RoomManager::RoomManager()
 {
@@ -8,70 +10,42 @@ RoomManager::RoomManager()
 		roomList.add(new Room);
 	}
 	
-
+	currentRoom = roomList.At(0)->data;
 
 }
 
 void RoomManager::Init()
 {
+	roomList.At(0)->data->name = "Consciousness entry point";
+	roomList.At(0)->data->onceDescription = "Long time ago there was a man who was told to be a legend..";
+	roomList.At(0)->data->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\n";
+
+	Answers* a = new Answers(roomList.At(0)->data->Description, "show");
 	
+	roomList.At(0)->data->answers.add(a);
+
+
+	currentRoom = roomList.At(0)->data;
+
+
+	roomList.At(1)->data->name = "Portal room";
+	roomList.At(1)->data->onceDescription = "With the speed of thought you travelled timelessly between both positions";
+	roomList.At(1)->data->Description = "You are in front of a huge portal\n";
+
+
+
+
+
+
+
+
 
 
 }
 
 
-void RoomManager::PrintRoom(Room* _currentRoom)
-{
-	
-	
-
-		Room* roomCopy;
-		roomCopy = _currentRoom;
-		roomCopy->name = _currentRoom->name;
-
-
-		for (; *_currentRoom->name != '\0'; _currentRoom->name++)
-		{
-			printf("%c", *room->name);
-			sleep(100);
-		}
-
-		printf("\n");
-		_currentRoom->name = roomCopy->name;
-		roomCopy->onceDescription = _currentRoom->onceDescription;
 
 
 
 
 
-
-		for (; *room->onceDescription != '\0'; room->onceDescription++)
-		{
-			printf("%c", *room->onceDescription);
-			sleep(100);
-
-		}
-		room->Description = roomCopy->Description;
-
-		printf("\n");
-
-		printf("\n");
-
-		for (; *room->Description != '\0'; room->Description++)
-		{
-			printf("%c", *room->Description);
-			sleep(50);
-
-		}
-		room->Description = roomCopy->Description;
-
-		printf("\n");
-		printf("\n");
-
-
-
-	
-
-
-
-}

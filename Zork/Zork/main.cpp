@@ -15,26 +15,12 @@
 int genericCounter = 0;
 
 
-
-
-void sleep(unsigned int mseconds)
-{
-	clock_t goal = mseconds + clock();
-	while (goal > clock());
-}
-
-
-
 int main()
 {
 
 
-	GameManager* game;
-
-	
-	
 	game->Init();
-
+	game->GameLoop();
 	game->CleanUp();
 	
 	getchar();

@@ -1,5 +1,5 @@
-#ifndef __ROOMMANAGER_H__
-#define __ROOMMANAGER_H__
+#ifndef __ROOMMANAGER__H__
+#define __ROOMMANAGER__H__
 
 #include "exit.h"
 #include "room.h"
@@ -7,10 +7,12 @@
 
 class RoomManager
 {
+
 public:
 	RoomManager();
+public:
 	void Init();
-	void PrintRoom(Room* _currentRoom);
+	void sleep(unsigned int mseconds);
 public:
 	
 	p2List<Room*> roomList;

@@ -39,6 +39,12 @@
     <ClCompile Include="DataStructures\p2Log.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
+    <ClCompile Include="exit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="room.h">

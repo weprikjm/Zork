@@ -1,15 +1,21 @@
 #ifndef __ANSWERS_H__
 #define __ANSWERS_H__
+
 #include "DataStructures/p2SString.h"
 
-class answers
+
+
+
+class Answers
 {
 public:
-	p2SString* Dunno;
-	p2SString* Cant;
-
+	Answers(const char*, const char*);
 public:
-	answers();
+	p2SString* Answer;
+	p2SString* command;
+	
+
+
 
 };
 

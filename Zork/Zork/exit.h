@@ -1,6 +1,12 @@
-//#include <iostream>
+
 #ifndef __EXIT_H__
 #define __EXIT_H__
+
+#include "Entity.h"
+
+
+
+
 enum direction
 {
 	NORTH,
@@ -16,9 +22,14 @@ enum direction
 class Exit : public entity
 {
 public:
+	Exit(){}
+
+public:
 	char* description;
 	direction orientation;
 
-}exitRoom1, exitRoom2;
+	~Exit();
+	
+};
 
 #endif
