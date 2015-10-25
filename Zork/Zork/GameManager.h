@@ -7,6 +7,7 @@
 #include "RoomManager.h"
 #include "RoomRenderer.h"
 #include "DataStructures/p2SString.h"
+#include "input.h"
 
 
 
@@ -28,5 +29,5 @@ public:
 	bool end;
 	bool InSameRoom;
 };
-extern GameManager* game = new GameManager;
+//
 #endif

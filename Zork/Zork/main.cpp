@@ -13,7 +13,7 @@
 #define MAX_SIZE_COMMAND 1000
 
 int genericCounter = 0;
-
+extern GameManager* game = new GameManager;
 
 int main()
 {
