@@ -17,7 +17,6 @@ public:
 	
 	p2List<Room*> roomList;
 	Room* currentRoom;
-
 };
 
 

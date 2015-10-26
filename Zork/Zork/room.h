@@ -5,7 +5,7 @@
 #include "exit.h"
 #include "Answers.h"
 #include "DataStructures/p2List.h"
-
+#include "RoomManager.h"
 enum RoomNames
 {
 	CONSCIOUSNESSENTRY = 0,
@@ -40,7 +40,7 @@ public:
 	p2List<Answers*> answers;
 
 	
-	//bool CheckCommand(const char* command, bool&);
+	
 
 
 
@@ -88,16 +88,3 @@ public:
 
 
 
-	void my_int_func(int x)
-	{
-		printf("%d\n", x);
-	}
-
-	int main()
-	{
-		
-		/* the ampersand is actually optional */
-		foo = &my_int_func;
-
-		return 0;
-	}

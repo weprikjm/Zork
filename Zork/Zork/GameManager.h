@@ -29,5 +29,5 @@ public:
 	bool end;
 	bool InSameRoom;
 };
-//
+GameManager* game;
 #endif
