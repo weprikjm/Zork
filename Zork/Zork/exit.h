@@ -22,7 +22,7 @@ enum direction
 class Exit : public entity
 {
 public:
-	Exit(){}
+	Exit(const char* _name): entity(_name){}
 
 public:
 	char* description;

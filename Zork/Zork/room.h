@@ -5,7 +5,7 @@
 #include "exit.h"
 #include "answers.h"
 #include "DataStructures/p2DynArray.h"
-
+#include "item.h"
 
 
 
@@ -23,17 +23,18 @@ class Room : public entity
 {
 public:
 	
-	Room(){ }
+	Room(const char* _name){ }
+	Room(){}
 public:
 	
-	char* roomName;
-	RoomNames name;
+	
+	RoomNames nameEnum;
 	char* onceDescription;
 	char* Description;
 	
 	p2DynArray<Exit*> exits;
 	p2DynArray<Answers*> answers;
-
+	p2DynArray<item*> items;
 	
 
 	~Room();

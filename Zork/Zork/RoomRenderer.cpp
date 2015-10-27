@@ -20,16 +20,16 @@ void RoomRenderer::PrintRoom(Room* _currentRoom)
 	roomCopy = _currentRoom;
 
 
-	char* tmpName = _currentRoom->roomName;
-	for (; *_currentRoom->roomName != '\0'; _currentRoom->roomName++)
+	const char* tmpName = _currentRoom->name;
+	for (; *_currentRoom->name != '\0'; _currentRoom->name++)
 	{
-		printf("%c", *_currentRoom->roomName);
-		sleep(100);
+		printf("%c", *_currentRoom->name);
+		sleep(10);
 	}
 
 	printf("\n");
 
-	_currentRoom->roomName = tmpName;//We set the pointer again to the first char of the string.
+	_currentRoom->name = tmpName;//We set the pointer again to the first char of the string.
 
 
 
@@ -38,7 +38,7 @@ void RoomRenderer::PrintRoom(Room* _currentRoom)
 	for (; *_currentRoom->onceDescription != '\0'; _currentRoom->onceDescription++)
 	{
 		printf("%c", *_currentRoom->onceDescription);
-		sleep(100);
+		sleep(10);
 
 	}
 	
@@ -54,7 +54,7 @@ void RoomRenderer::PrintRoom(Room* _currentRoom)
 	for (; *_currentRoom->Description != '\0'; _currentRoom->Description++)
 	{
 		printf("%c", *_currentRoom->Description);
-		sleep(50);
+		sleep(5);
 
 	}
 	_currentRoom->Description = tmpDescription;

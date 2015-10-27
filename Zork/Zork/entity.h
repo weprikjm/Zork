@@ -6,7 +6,11 @@
 class entity
 {
 public:
-	char* name;
+	entity(){}
+	entity(const char* _name) : name(_name){}
+
+public:
+	const char* name;
 
 
 };

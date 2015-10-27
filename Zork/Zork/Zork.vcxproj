@@ -68,6 +68,7 @@
     <ClCompile Include="DataStructures\p2Log.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="RoomManager.cpp" />
@@ -85,6 +86,7 @@
     <ClInclude Include="exit.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="item.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="RoomManager.h" />

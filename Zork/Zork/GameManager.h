@@ -10,6 +10,7 @@
 #include "input.h"
 #include <string>
 #include <sstream>
+#include "player.h"
 
 class GameManager
 {
@@ -25,6 +26,9 @@ public:
 	std::string command;
 	RoomManager* ROOMManager;
 	RoomRenderer* ROOMRenderer;
+
+	player* PC; //Player Controller
+
 
 	bool end;
 	bool InSameRoom;

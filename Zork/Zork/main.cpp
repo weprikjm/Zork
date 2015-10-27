@@ -23,7 +23,7 @@ int main()
 	game->GameLoop();
 	game->CleanUp();
 	
-	getchar();
+	
 	return 0;
 }
 
