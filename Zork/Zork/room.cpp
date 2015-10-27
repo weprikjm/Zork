@@ -8,6 +8,7 @@
 Room::~Room()
 {
 
-	exits.clear();
+	exits.Clear();
+	answers.Clear();
 
 }

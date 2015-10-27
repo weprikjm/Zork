@@ -8,46 +8,42 @@ RoomManager::RoomManager()
 {
 	for (int i = 0; i < TOTAL_ROOMS_GAME; i++)
 	{
-		roomList.add(new Room());
+		Room* rmptr = new Room;
+		roomArray.PushBack(rmptr);
 	}
 
-	currentRoom = roomList.At(0)->data;
+	currentRoom = roomArray[0];
 
 }
 
 void RoomManager::Init()
 {
+	roomArray[0]->name = CONSCIOUSNESSENTRY;
+	roomArray[0]->roomName = "Consciousness Entry Point";
+	roomArray[0]->onceDescription = "Long time ago there was a man who was told to be a legend..";
+	roomArray[0]->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\n";
 
-
-
-
-	roomList.At(0)->data->name = CONSCIOUSNESSENTRY;
-	roomList.At(0)->data->roomName = "Consciousness Entry Point";
-	roomList.At(0)->data->onceDescription = "Long time ago there was a man who was told to be a legend..";
-	roomList.At(0)->data->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\n";
-
-	Answers* a = new Answers(roomList.At(0)->data->Description, "show");
+	Answers* a = new Answers(roomArray[0]->Description, "show");
 	
-	roomList.At(0)->data->answers.add(a);
+	roomArray[0]->answers.PushBack(a);
 
 
-	currentRoom = roomList.At(0)->data;
+	currentRoom = roomArray[0];
 
 
-	roomList.At(1)->data->name = PORTAL1;
-	roomList.At(1)->data->roomName = "Portal space";
-	roomList.At(1)->data->onceDescription = "With the speed of thought you travelled timelessly between both positions";
-	roomList.At(1)->data->Description = "You are in front of a huge portal\n";
-
+	roomArray[1]->name = PORTAL1;
+	roomArray[1]->roomName = "Portal space";
+	roomArray[1]->onceDescription = "With the speed of thought you travelled timelessly between both positions";
+	roomArray[1]->Description = "You are in front of a huge portal\n";
 }
 
 
 
-bool RoomManager::CheckCommand(Room* _currentRoom)
+bool RoomManager::CheckCommand(const char* _command, Room* _currentRoom, bool& _end)
 {
 	if (_currentRoom->name == CONSCIOUSNESSENTRY)
 	{
-		
+		_end = Room1CheckCommand(_command,_currentRoom);
 	}
 
 	if (_currentRoom->name == PORTAL1)
@@ -56,12 +52,26 @@ bool RoomManager::CheckCommand(Room* _currentRoom)
 	}
 
 
-	return true;
-
-
+	return _end;
 
 
 }
 
 
 
+bool RoomManager::Room1CheckCommand(const char* _command, Room* _currentRoom, bool& _end)
+{
+	if (!strcmp(_command, "exit") || !strcmp(_command, "Exit"))
+	{
+		return false;
+	}
+	if (!strcmp(_command, "go north") || !strcmp(_command, "Go north") || !strcmp(_command, "Go North"))
+	{
+		currentRoom = roomArray[1];
+		_end = false;
+	}
+
+
+
+	return true;
+}

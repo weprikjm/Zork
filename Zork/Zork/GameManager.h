@@ -8,8 +8,8 @@
 #include "RoomRenderer.h"
 #include "DataStructures/p2SString.h"
 #include "input.h"
-
-
+#include <string>
+#include <sstream>
 
 class GameManager
 {
@@ -22,12 +22,12 @@ public:
 
 public:
 	input input;
-	p2SString command;
+	std::string command;
 	RoomManager* ROOMManager;
 	RoomRenderer* ROOMRenderer;
 
 	bool end;
 	bool InSameRoom;
 };
-GameManager* game;
+
 #endif

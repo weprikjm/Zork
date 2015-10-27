@@ -2,6 +2,7 @@
 
 
 
+
 void GameManager::Init()
 {
 	ROOMManager = new RoomManager;
@@ -27,14 +28,14 @@ void GameManager::GameLoop()
 			while (InSameRoom)
 			{
 				printf("%s", input.nextMessage);
-				command = fgets(temp, 5, stdin);
+				std::getline(std::cin, command);
+				//command = fgets(temp, 5, stdin);
 
-				bool comprovation = ROOMManager->CheckCommand(ROOMManager->currentRoom);
+				bool comprovation = ROOMManager->CheckCommand(command.c_str(),ROOMManager->currentRoom,end);
 
 				if (!comprovation)
 					InSameRoom = false;
 			
-
 			}
 
 

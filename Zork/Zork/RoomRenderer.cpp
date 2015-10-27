@@ -64,10 +64,6 @@ void RoomRenderer::PrintRoom(Room* _currentRoom)
 
 
 
-	
-
-
-
 }
 
 
@@ -75,7 +71,5 @@ void RoomRenderer::sleep(unsigned int mseconds)
 {
 	clock_t goal = mseconds + clock();
 	while (goal > clock());
-
-
 
 }

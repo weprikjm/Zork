@@ -1,14 +1,12 @@
-#ifndef __ROOM__H__
-#define __ROOM__H__
+#ifndef __ROOM_H__
+#define __ROOM_H__
 
 #include "entity.h"
 #include "exit.h"
 #include "answers.h"
-#include "DataStructures/p2List.h"
-#include "RoomManager.h"
-#include "GameManager.h"
-//#include "answers.h"
-//#include "RoomManager.h"
+#include "DataStructures/p2DynArray.h"
+
+
 
 
 
@@ -33,8 +31,8 @@ public:
 	char* onceDescription;
 	char* Description;
 	
-	p2List<Exit*> exits;
-	p2List<Answers*> answers;
+	p2DynArray<Exit*> exits;
+	p2DynArray<Answers*> answers;
 
 	
 
