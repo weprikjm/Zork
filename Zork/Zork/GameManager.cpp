@@ -9,8 +9,6 @@ void GameManager::Init()
 
 	ROOMRenderer = new RoomRenderer;
 	
-
-
 }
 
 
@@ -31,7 +29,7 @@ void GameManager::GameLoop()
 				printf("%s", input.nextMessage);
 				command = fgets(temp, 5, stdin);
 
-				bool comprovation = ROOMManager->currentRoom->CheckCommand(command.GetString(), end);
+				bool comprovation = ROOMManager->CheckCommand(ROOMManager->currentRoom);
 
 				if (!comprovation)
 					InSameRoom = false;

@@ -1,7 +1,7 @@
 #include "room.h"
-#include "answers.h"
-#include "RoomManager.h"
-#include "GameManager.h"
+//#include "answers.h"
+//#include "RoomManager.h"
+//#include "GameManager.h"
 
 
 
@@ -9,6 +9,5 @@ Room::~Room()
 {
 
 	exits.clear();
-
 
 }

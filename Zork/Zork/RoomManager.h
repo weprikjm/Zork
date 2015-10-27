@@ -10,6 +10,7 @@ class RoomManager
 
 public:
 	RoomManager();
+	bool CheckCommand(Room* _currentRoom);
 public:
 	void Init();
 	void sleep(unsigned int mseconds);

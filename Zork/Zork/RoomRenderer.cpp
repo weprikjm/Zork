@@ -20,16 +20,16 @@ void RoomRenderer::PrintRoom(Room* _currentRoom)
 	roomCopy = _currentRoom;
 
 
-	char* tmpName = _currentRoom->name;
-	for (; *_currentRoom->name != '\0'; _currentRoom->name++)
+	char* tmpName = _currentRoom->roomName;
+	for (; *_currentRoom->roomName != '\0'; _currentRoom->roomName++)
 	{
-		printf("%c", *_currentRoom->name);
+		printf("%c", *_currentRoom->roomName);
 		sleep(100);
 	}
 
 	printf("\n");
 
-	_currentRoom->name = tmpName;
+	_currentRoom->roomName = tmpName;//We set the pointer again to the first char of the string.
 
 
 

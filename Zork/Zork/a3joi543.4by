@@ -3,14 +3,9 @@
 
 #include "entity.h"
 #include "exit.h"
-#include "answers.h"
+#include "Answers.h"
 #include "DataStructures/p2List.h"
 #include "RoomManager.h"
-#include "GameManager.h"
-//#include "answers.h"
-//#include "RoomManager.h"
-
-
 
 enum RoomNames
 {
@@ -40,6 +35,10 @@ public:
 
 	~Room();
 };
+
+
+
+
 
 
 #endif
