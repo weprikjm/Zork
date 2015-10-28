@@ -24,6 +24,4 @@ public:
 	player* Player;
 };
 
-
-
 #endif

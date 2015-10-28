@@ -5,7 +5,7 @@
 
 void GameManager::Init()
 {
-	ROOMManager = new RoomManager;
+	ROOMManager = new RoomManager(new player);
 	ROOMManager->Init();
 
 	ROOMRenderer = new RoomRenderer;
@@ -28,7 +28,7 @@ void GameManager::GameLoop()
 			InSameRoom = true;
 			while (InSameRoom)
 			{
-				printf("\n\t\t%s ", input.nextMessage);
+				printf("%s ", input.nextMessage);
 				std::getline(std::cin, command);
 				
 

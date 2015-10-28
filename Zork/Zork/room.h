@@ -25,9 +25,11 @@ public:
 	
 	Room(const char* _name){ }
 	Room(){}
+
+	const char* GetName();
+
+
 public:
-	
-	
 	RoomNames nameEnum;
 	char* onceDescription;
 	char* Description;

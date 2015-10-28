@@ -1,3 +1,6 @@
+#ifndef __PLAYER_H__
+#define __PLAYER_H__
+
 #include "entity.h"
 #include "DataStructures\p2DynArray.h"
 #include "item.h"
@@ -12,3 +15,5 @@ public:
 
 
 };
+
+#endif

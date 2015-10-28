@@ -12,3 +12,9 @@ Room::~Room()
 	answers.Clear();
 
 }
+
+
+const char* Room::GetName()
+{
+	return name;
+}
