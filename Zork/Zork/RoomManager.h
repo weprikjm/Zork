@@ -12,7 +12,7 @@ public:
 
 public:
 	bool CheckCommand(const char*, Room* _currentRoom, bool& _end);
-	bool Room1CheckCommand(const char*,Room*,bool&);
+	bool Room1CheckCommand(const char* _command,Room*_currentRoom,bool& _end);
 	bool Room2CheckCommand(const char* _command, Room* _currentRoom, bool& _end);
 public:
 	void Init();
