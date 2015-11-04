@@ -4,13 +4,13 @@
 
 #include "input.h"
 
-#include "RoomManager.h"
-#include "RoomRenderer.h"
+
 #include "DataStructures/p2SString.h"
 #include "input.h"
 #include <string>
 #include <sstream>
 #include "player.h"
+#include "Room.h"
 
 class GameManager
 {
@@ -21,17 +21,45 @@ public:
 	void GameLoop();
 	void CleanUp();
 
+
+	bool CheckCommand();
+	bool commandExit();
+	bool Room1CheckCommand();
+	bool Room2CheckCommand();
+	bool Room3CheckCommand();
+	bool Room4CheckCommand();
+	bool Room5CheckCommand();
+	bool Room6CheckCommand();
+
+
+
+	bool PickingItems();
+	bool DropingItems();
+
+
+
+	void PrintRoom(Room* _currentRoom);
+
 public:
 	input input;
 	std::string command;
-	RoomManager* ROOMManager;
-	RoomRenderer* ROOMRenderer;
 
 	player* PC; //Player Controller
 
 
 	bool end;
 	bool InSameRoom;
+
+
+//Room Related
+public:
+	p2DynArray<Room*> roomArray;
+	Room* currentRoom;
+	
+
+//Rendering utils
+private:
+void sleep(unsigned int mseconds);
 };
 
 #endif
