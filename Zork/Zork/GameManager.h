@@ -60,6 +60,10 @@ public:
 //Rendering utils
 private:
 void sleep(unsigned int mseconds);
+
+//Atributes to control the game flow
+bool roomChange = false;
+
 };
 
 #endif

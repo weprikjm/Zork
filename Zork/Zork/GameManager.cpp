@@ -29,9 +29,9 @@ void GameManager::GameLoop()
 
 				bool comprovation = CheckCommand();
 
-				if (comprovation)
+				if (roomChange)
 					InSameRoom = false;
-			
+				roomChange = false;
 			}
 
 
@@ -55,26 +55,28 @@ bool GameManager::CheckCommand()
 			bool ret = false;
 			commandExit();
 
-			Room1CheckCommand();
-	
-			Room2CheckCommand();
-		
-			Room3CheckCommand();
+			if (!roomChange)
+				roomChange = Room1CheckCommand();
+			if (!roomChange)
+				roomChange = Room2CheckCommand();
+			if (!roomChange)
+				roomChange = Room3CheckCommand();
+			if (!roomChange)
+				roomChange = Room4CheckCommand();
+			if (!roomChange)
+				roomChange = Room5CheckCommand();
+			if (!roomChange)
+				roomChange = Room6CheckCommand();
 
-			Room4CheckCommand();
-
-			Room5CheckCommand();
-
-			Room6CheckCommand();
-
-			 PickingItems();
-			 DropingItems();
-
-
-	
+			ret = PickingItems();
+			ret = DropingItems();
 
 
-	return true;
+			if (!roomChange && !ret)
+				printf("\n\nNo such action can be done\n\n");
+
+
+	return ret;
 
 
 }
@@ -87,31 +89,13 @@ bool GameManager::Room1CheckCommand()
 	//end = true finishes the game //false it continues
 	bool progress = false;//Something happened but player continues in the same room
 
-	if (!strcmp(command.c_str(), "exit") || !strcmp(command.c_str(), "Exit"))
-	{
-		end = false;
-		ret = true;
-	}
+
 	if (!strcmp(command.c_str(), "go north") || !strcmp(command.c_str(), "Go north") || !strcmp(command.c_str(), "Go North"))
 	{
 		currentRoom = roomArray[1];
 		ret = true;
 	}
-	if (!strcmp(command.c_str(), "pick glimmering orb") || !strcmp(command.c_str(), "pick orb") || !strcmp(command.c_str(), "Pick Orb"))
-	{
-		if (currentRoom->items.Count() != 0 && !strcmp(currentRoom->items[0]->GetName(), "glimmering orb"))//If item list of the room is empty player doesn't pick the object
-		{
-			item* itemToRemove;
-			currentRoom->items.Pop(itemToRemove);
-			PC->inventory.PushBack(itemToRemove);
-			printf("\nYou now have %s\n\n", itemToRemove->GetName());
-			progress = true;
-		}
-		else
-		{
-			printf("\n\nYou already have the object\n\n");
-		}
-	}
+
 	if (!strcmp(command.c_str(), "drop glimmering orb") || !strcmp(command.c_str(), "drop orb") || !strcmp(command.c_str(), "Drop Orb"))
 	{
 		if (PC->inventory.Count() != 0)
@@ -137,37 +121,14 @@ bool GameManager::Room1CheckCommand()
 bool GameManager::Room2CheckCommand()
 {
 	bool ret = false;
-	if (!strcmp(command.c_str(), "exit") || !strcmp(command.c_str(), "Exit"))
-	{
-		end = false;
-		ret = true;
-	}
+
 	if (!strcmp(command.c_str(), "go south") || !strcmp(command.c_str(), "Go south") || !strcmp(command.c_str(), "Go South"))
 	{
 		currentRoom = roomArray[0];
 		ret = true;
 	}
 
-	if (!strcmp(command.c_str(), "pick glimmering orb") || !strcmp(command.c_str(), "pick orb") || !strcmp(command.c_str(), "Pick Orb"))
-	{
-		if (currentRoom->items.Count() != 0 && !strcmp(currentRoom->items[0]->GetName(), "glimmering orb"))//If item list of the room is empty player doesn't pick the object
-		{
-			item* itemToRemove;
-			currentRoom->items.Pop(itemToRemove);
-			PC->inventory.PushBack(itemToRemove);
-			printf("\nYou now have %s\n\n", itemToRemove->GetName());
-
-		}
-		else if (PC->inventory.Count() == 0 && currentRoom->items.Count() == 0)
-		{
-			printf("\n\nThere's no such thing around\n\n");
-		}
-		else if (PC->inventory.Count() > 0)
-		{
-			printf("\n\nYou already have the object\n\n");
-		}
-
-	}
+	
 
 	if (!strcmp(command.c_str(), "drop glimmering orb") || !strcmp(command.c_str(), "drop orb") || !strcmp(command.c_str(), "Drop Orb"))
 	{
@@ -196,27 +157,23 @@ bool GameManager::Room2CheckCommand()
 
 bool GameManager::Room3CheckCommand()
 {
-
-
+	return false;
 }
 
 bool GameManager::Room4CheckCommand()
 {
-
-
+	return false;
 }
 
 
 bool GameManager::Room5CheckCommand()
 {
-
-
+	return false;
 }
 
 bool GameManager::Room6CheckCommand()
 {
-
-
+	return false;
 }
 
 
@@ -230,12 +187,42 @@ bool GameManager::commandExit()
 		end = false;
 		ret = true;
 	}
+
+	return ret;
 }
 
 
 
 
+bool GameManager::PickingItems()
+{
+	bool ret = false;
+	if (!strcmp(command.c_str(), "pick glimmering orb") || !strcmp(command.c_str(), "pick orb") || !strcmp(command.c_str(), "Pick Orb"))
+	{
+		if (currentRoom->items.Count() != 0 && !strcmp(currentRoom->items[0]->GetName(), "glimmering orb"))//If item list of the room is empty player doesn't pick the object
+		{
+			item* itemToRemove;
+			currentRoom->items.Pop(itemToRemove);
+			PC->inventory.PushBack(itemToRemove);
+			printf("\nYou now have %s\n\n", itemToRemove->GetName());
 
+		}
+		else if (PC->inventory.Count() == 0 && currentRoom->items.Count() == 0)
+		{
+			printf("\n\nThere's no such thing around\n\n");
+		}
+		else if (PC->inventory.Count() > 0)
+		{
+			printf("\n\nYou already have the object\n\n");
+		}
+
+	}
+	return ret;
+}
+bool GameManager::DropingItems()
+{
+	return false;
+}
 
 
 
