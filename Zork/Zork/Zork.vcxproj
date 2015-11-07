@@ -65,6 +65,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="answers.cpp" />
+    <ClCompile Include="DataStructures\MyString.cpp" />
     <ClCompile Include="DataStructures\p2Log.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -77,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answers.h" />
+    <ClInclude Include="DataStructures\MyString.h" />
     <ClInclude Include="DataStructures\p2Defs.h" />
     <ClInclude Include="DataStructures\p2DynArray.h" />
     <ClInclude Include="DataStructures\p2List.h" />

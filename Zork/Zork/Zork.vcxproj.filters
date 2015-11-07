@@ -48,6 +48,9 @@
     <ClCompile Include="item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataStructures\MyString.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="room.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="item.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\MyString.h">
+      <Filter>DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

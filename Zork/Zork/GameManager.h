@@ -5,7 +5,7 @@
 #include "input.h"
 
 
-#include "DataStructures/p2SString.h"
+#include "DataStructures/MyString.h"
 #include "input.h"
 #include <string>
 #include <sstream>
@@ -42,7 +42,8 @@ public:
 
 public:
 	input input;
-	std::string command;
+	std::string command;//Dunno any other way to get info by the user
+	MyString commandDef;
 
 	player* PC; //Player Controller
 

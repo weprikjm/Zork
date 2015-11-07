@@ -9,6 +9,51 @@ void GameManager::sleep(unsigned int mseconds)
 
 
 
+
+
+
+void GameManager::Init()
+{
+	PC = new player("Trevor");
+
+	//Creating rooms
+	for (int i = 0; i < TOTAL_ROOMS_GAME; i++)
+	{
+		Room* rmptr = new Room;
+		roomArray.PushBack(rmptr);
+	}
+
+	currentRoom = roomArray[0];
+
+
+	roomArray[0]->nameEnum = CONSCIOUSNESSENTRY;
+	roomArray[0]->name = "Consciousness Entry Point";
+	roomArray[0]->onceDescription = "Long time ago there was a man who was told to be a legend..";
+	roomArray[0]->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\nyou can see a glimmering orb, there's something shining north from where you are\n";
+
+	Answers* a = new Answers(roomArray[0]->Description, "show");
+
+	roomArray[0]->answers.PushBack(a);
+
+	roomArray[0]->items.PushBack(new item("glimmering orb"));
+
+	currentRoom = roomArray[0];
+
+
+	roomArray[1]->nameEnum = PORTAL1;
+	roomArray[1]->name = "Portal space";
+	roomArray[1]->onceDescription = "With the speed of thought you travelled timelessly between both positions";
+	roomArray[1]->Description = "You are in front of a huge portal\n";
+
+	//roomArray[1]->items.PushBack(new item("Doll"));
+}
+
+
+
+
+
+
+
 void GameManager::GameLoop()
 {
 		end = true;
@@ -26,6 +71,7 @@ void GameManager::GameLoop()
 				printf("%s ", input.nextMessage);
 				std::getline(std::cin, command);
 				
+				commandDef = command.c_str();
 
 				bool comprovation = CheckCommand();
 
@@ -73,7 +119,7 @@ bool GameManager::CheckCommand()
 
 
 			if (!roomChange && !ret)
-				printf("\n\nNo such action can be done\n\n");
+				printf("\n\nNo such action can be done");
 
 
 	return ret;
@@ -90,13 +136,13 @@ bool GameManager::Room1CheckCommand()
 	bool progress = false;//Something happened but player continues in the same room
 
 
-	if (!strcmp(command.c_str(), "go north") || !strcmp(command.c_str(), "Go north") || !strcmp(command.c_str(), "Go North"))
+	if (commandDef == "go north" || commandDef == "Go north" || commandDef == "Go North")
 	{
 		currentRoom = roomArray[1];
 		ret = true;
 	}
 
-	if (!strcmp(command.c_str(), "drop glimmering orb") || !strcmp(command.c_str(), "drop orb") || !strcmp(command.c_str(), "Drop Orb"))
+	if (commandDef == "drop glimmering orb" || commandDef == "drop orb" || commandDef == "Drop Orb")
 	{
 		if (PC->inventory.Count() != 0)
 		{
@@ -104,7 +150,7 @@ bool GameManager::Room1CheckCommand()
 			PC->inventory.Pop(itemToRemove);
 			currentRoom->items.PushBack(itemToRemove);
 			printf("\n\nYou dropped %s\n\n", itemToRemove->GetName());
-			progress = true;
+			
 		}
 		else
 		{
@@ -122,7 +168,7 @@ bool GameManager::Room2CheckCommand()
 {
 	bool ret = false;
 
-	if (!strcmp(command.c_str(), "go south") || !strcmp(command.c_str(), "Go south") || !strcmp(command.c_str(), "Go South"))
+	if (commandDef == "go south" || commandDef == "Go south" || commandDef == "Go South")
 	{
 		currentRoom = roomArray[0];
 		ret = true;
@@ -130,7 +176,7 @@ bool GameManager::Room2CheckCommand()
 
 	
 
-	if (!strcmp(command.c_str(), "drop glimmering orb") || !strcmp(command.c_str(), "drop orb") || !strcmp(command.c_str(), "Drop Orb"))
+	if (commandDef == "drop glimmering orb" || commandDef == "drop orb" || commandDef == "Drop Orb")
 	{
 		if (PC->inventory.Count() != 0)
 		{
@@ -182,7 +228,7 @@ bool GameManager::Room6CheckCommand()
 bool GameManager::commandExit()
 {
 	bool ret = false;
-	if (!strcmp(command.c_str(), "exit") || !strcmp(command.c_str(), "Exit"))
+	if (commandDef == "exit" || commandDef == "Exit")
 	{
 		end = false;
 		ret = true;
@@ -197,7 +243,7 @@ bool GameManager::commandExit()
 bool GameManager::PickingItems()
 {
 	bool ret = false;
-	if (!strcmp(command.c_str(), "pick glimmering orb") || !strcmp(command.c_str(), "pick orb") || !strcmp(command.c_str(), "Pick Orb"))
+	if (commandDef == "pick glimmering orb" || commandDef == "pick orb" || commandDef == "Pick Orb")
 	{
 		if (currentRoom->items.Count() != 0 && !strcmp(currentRoom->items[0]->GetName(), "glimmering orb"))//If item list of the room is empty player doesn't pick the object
 		{
@@ -226,63 +272,6 @@ bool GameManager::DropingItems()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void GameManager::Init()
-{
-	PC = new player("Trevor");
-
-	//Creating rooms
-	for (int i = 0; i < TOTAL_ROOMS_GAME; i++)
-	{
-		Room* rmptr = new Room;
-		roomArray.PushBack(rmptr);
-	}
-
-	currentRoom = roomArray[0];
-
-
-	roomArray[0]->nameEnum = CONSCIOUSNESSENTRY;
-	roomArray[0]->name = "Consciousness Entry Point";
-	roomArray[0]->onceDescription = "Long time ago there was a man who was told to be a legend..";
-	roomArray[0]->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\nyou can see a glimmering orb, there's something shining north from where you are\n";
-
-	Answers* a = new Answers(roomArray[0]->Description, "show");
-
-	roomArray[0]->answers.PushBack(a);
-
-	roomArray[0]->items.PushBack(new item("glimmering orb"));
-
-	currentRoom = roomArray[0];
-
-
-	roomArray[1]->nameEnum = PORTAL1;
-	roomArray[1]->name = "Portal space";
-	roomArray[1]->onceDescription = "With the speed of thought you travelled timelessly between both positions";
-	roomArray[1]->Description = "You are in front of a huge portal\n";
-
-	//roomArray[1]->items.PushBack(new item("Doll"));
-}
-
-
-
 void GameManager::PrintRoom(Room* _currentRoom)
 {
 
@@ -293,7 +282,7 @@ void GameManager::PrintRoom(Room* _currentRoom)
 
 
 	const char* tmpName = _currentRoom->name;
-	for (; *_currentRoom->name != '\0'; _currentRoom->name++)
+	for (; *_currentRoom->name.c_str() != '\0'; _currentRoom->name++)
 	{
 		printf("%c", *_currentRoom->name);
 		sleep(10);

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
-#include "DataStructures/p2SString.h"
 #include "entity.h"
 #include "exit.h"
 #include "room.h"

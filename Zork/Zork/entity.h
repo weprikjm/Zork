@@ -10,7 +10,7 @@ public:
 	entity(const char* _name) : name(_name){}
 
 public:
-	const char* name;
+	MyString name;
 
 
 };

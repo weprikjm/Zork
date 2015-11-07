@@ -16,5 +16,5 @@ Room::~Room()
 
 const char* Room::GetName()
 {
-	return name;
+	return name.c_str();
 }
