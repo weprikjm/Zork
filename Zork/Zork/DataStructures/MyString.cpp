@@ -315,6 +315,26 @@ int MyString::GetChunkSizeNeeded(int size)const
 	return finalInt;
 }
 
+int MyString::Count()
+{
+	return strlen(str);
+}
+
+const char MyString::operator[](uint index)
+{
+	if (index < Count())
+		return str[index];
+
+}
+
+
+
+
+
+
+
+
+
 void MyString::Clear()
 {
 	str[0] = '\0';

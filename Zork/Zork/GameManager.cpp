@@ -31,7 +31,7 @@ void GameManager::Init()
 	roomArray[0]->onceDescription = "Long time ago there was a man who was told to be a legend..";
 	roomArray[0]->Description = "Histories say that his spirit lives within all of us. Will you ever find it?\nyou can see a glimmering orb, there's something shining north from where you are\n";
 
-	Answers* a = new Answers(roomArray[0]->Description, "show");
+	Answers* a = new Answers(roomArray[0]->Description.c_str(), "show");
 
 	roomArray[0]->answers.PushBack(a);
 
@@ -75,7 +75,7 @@ void GameManager::GameLoop()
 
 				bool comprovation = CheckCommand();
 
-				if (roomChange)
+				if (roomChange||comprovation)
 					InSameRoom = false;
 				roomChange = false;
 			}
@@ -99,23 +99,24 @@ void GameManager::CleanUp()
 bool GameManager::CheckCommand()
 {
 			bool ret = false;
-			commandExit();
+			ret = commandExit();
 
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room1CheckCommand();
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room2CheckCommand();
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room3CheckCommand();
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room4CheckCommand();
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room5CheckCommand();
-			if (!roomChange)
+			if (!roomChange && !ret)
 				roomChange = Room6CheckCommand();
-
-			ret = PickingItems();
-			ret = DropingItems();
+			if (!roomChange && !ret)
+				ret = PickingItems();
+			if (!roomChange && !ret)
+				ret = DropingItems();
 
 
 			if (!roomChange && !ret)
@@ -142,60 +143,25 @@ bool GameManager::Room1CheckCommand()
 		ret = true;
 	}
 
-	if (commandDef == "drop glimmering orb" || commandDef == "drop orb" || commandDef == "Drop Orb")
-	{
-		if (PC->inventory.Count() != 0)
-		{
-			item* itemToRemove;
-			PC->inventory.Pop(itemToRemove);
-			currentRoom->items.PushBack(itemToRemove);
-			printf("\n\nYou dropped %s\n\n", itemToRemove->GetName());
-			
-		}
-		else
-		{
-			printf("\n\nYou cannot drop what you don't have\n\n");
-
-		}
-	}
-
-
-
 	return ret;
 }
 //Item picking and dropping temporary code. This code only lets the game have one object which is lame.
 bool GameManager::Room2CheckCommand()
 {
-	bool ret = false;
+	bool action = false;
 
 	if (commandDef == "go south" || commandDef == "Go south" || commandDef == "Go South")
 	{
 		currentRoom = roomArray[0];
-		ret = true;
+		action = true;
 	}
 
 	
 
-	if (commandDef == "drop glimmering orb" || commandDef == "drop orb" || commandDef == "Drop Orb")
-	{
-		if (PC->inventory.Count() != 0)
-		{
-			item* itemToRemove;
-			PC->inventory.Pop(itemToRemove);
-			currentRoom->items.PushBack(itemToRemove);
-			printf("\n\nYou dropped %s\n\n", itemToRemove->GetName());
-
-		}
-		else
-		{
-			printf("\n\nYou cannot drop what you don't have\n\n");
-
-		}
-	}
 
 
 
-	return ret;
+	return action;
 }
 
 
@@ -251,6 +217,7 @@ bool GameManager::PickingItems()
 			currentRoom->items.Pop(itemToRemove);
 			PC->inventory.PushBack(itemToRemove);
 			printf("\nYou now have %s\n\n", itemToRemove->GetName());
+			ret = true;
 
 		}
 		else if (PC->inventory.Count() == 0 && currentRoom->items.Count() == 0)
@@ -267,7 +234,29 @@ bool GameManager::PickingItems()
 }
 bool GameManager::DropingItems()
 {
-	return false;
+
+	bool ret = false;
+
+
+	if (commandDef == "drop glimmering orb" || commandDef == "drop orb" || commandDef == "Drop Orb")
+	{
+		if (PC->inventory.Count() != 0)
+		{
+			item* itemToRemove;
+			PC->inventory.Pop(itemToRemove);
+			currentRoom->items.PushBack(itemToRemove);
+			printf("\n\nYou dropped %s\n\n", itemToRemove->GetName());
+			ret = true;
+
+		}
+		else
+		{
+			printf("\n\nYou cannot drop what you don't have\n\n");
+
+		}
+	}
+
+	return ret;
 }
 
 
@@ -281,44 +270,43 @@ void GameManager::PrintRoom(Room* _currentRoom)
 	roomCopy = _currentRoom;
 
 
-	const char* tmpName = _currentRoom->name;
-	for (; *_currentRoom->name.c_str() != '\0'; _currentRoom->name++)
+
+	for (int i=0; i <_currentRoom->name.Count(); i++)
 	{
-		printf("%c", *_currentRoom->name);
+		printf("%c",_currentRoom->name[i]);
 		sleep(10);
 	}
 
 	printf("\n");
 
-	_currentRoom->name = tmpName;//We set the pointer again to the first char of the string.
 
 
 
-	char* tmpOnceDescription = _currentRoom->onceDescription;
 
-	for (; *_currentRoom->onceDescription != '\0'; _currentRoom->onceDescription++)
+
+	for (int i=0; i <_currentRoom->onceDescription.Count(); i++)
 	{
-		printf("%c", *_currentRoom->onceDescription);
+		printf("%c", _currentRoom->onceDescription[i]);
 		sleep(10);
 
 	}
 
 
-	_currentRoom->onceDescription = tmpOnceDescription;
+
 
 	printf("\n");
 
 	printf("\n");
 
 
-	char* tmpDescription = _currentRoom->Description;
-	for (; *_currentRoom->Description != '\0'; _currentRoom->Description++)
+	
+	for (int i=0; i < _currentRoom->Description.Count(); i++)
 	{
-		printf("%c", *_currentRoom->Description);
+		printf("%c", _currentRoom->Description[i]);
 		sleep(5);
 
 	}
-	_currentRoom->Description = tmpDescription;
+	
 
 	printf("\n");
 	printf("\n");

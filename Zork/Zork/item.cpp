@@ -2,5 +2,5 @@
 
 const char* item::GetName()
 {
-	return name->c_str();
+	return name.c_str();
 }

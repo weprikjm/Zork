@@ -25,9 +25,12 @@ public:
 	const MyString& operator+=(const char* mStr);
 	const MyString& operator=(const MyString& mStr);
 	const MyString& operator=(const char* mStr);
+	const char operator[](uint);
 //Getters
 	const char* c_str()const;
 	const uint GetCapacity()const;
+//Utilities
+	int Count();
 //Destruction
 	void Clear();
 

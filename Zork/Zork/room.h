@@ -31,8 +31,8 @@ public:
 
 public:
 	RoomNames nameEnum;
-	char* onceDescription;
-	char* Description;
+	MyString onceDescription;
+	MyString Description;
 	
 	p2DynArray<Exit*> exits;
 	p2DynArray<Answers*> answers;
