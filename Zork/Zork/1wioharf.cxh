@@ -96,7 +96,7 @@ void GameManager::CleanUp()
 }
 
 
-bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arrayToFill)
+bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*> arrayToFill)
 {
 	int j = 0;
 	MyString* tmpStr;
@@ -113,16 +113,9 @@ bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arr
 		else if (i == (commandDef.Count() - 1))
 			arrayToFill.PushBack(tmpStr);
 		else
-		{
-			tmpStr[j] = (char)commandDef[i];
-			j++;
-		}
-			
+			tmpStr[j] = commandDef[i];
 	}
-	if (arrayToFill.Count() > 0)
-		return true;
-	else
-		return false;
+
 }
 
 
@@ -130,8 +123,8 @@ bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arr
 bool GameManager::CheckCommand()
 {
 			bool ret = false;
-			bool strings = false;
-			strings = DivideInWords(commandDef,arrayCommand);
+
+			ret = DivideInWords(commandDef,arrayCommand);
 
 
 

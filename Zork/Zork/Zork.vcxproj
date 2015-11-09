@@ -72,9 +72,7 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="room.cpp" />
-    <ClCompile Include="RoomManager.cpp" />
     <ClCompile Include="exit.cpp" />
-    <ClCompile Include="RoomRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answers.h" />
@@ -91,8 +89,6 @@
     <ClInclude Include="item.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
-    <ClInclude Include="RoomManager.h" />
-    <ClInclude Include="RoomRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

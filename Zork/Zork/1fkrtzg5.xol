@@ -36,7 +36,7 @@ public:
 	bool PickingItems();
 	bool DropingItems();
 
-	bool DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arrayCommand);
+	bool DivideInWords(MyString& commandDef, p2DynArray<MyString*> arrayCommand);
 
 	void PrintRoom(Room* _currentRoom);
 

@@ -36,7 +36,7 @@ public:
 
 	
 private:
-	int CalculateSize(const char*)const;
+	int CalculateSize(const char* mStr)const;
 	int GetChunkSizeNeeded(int size)const;
 private:
 	uint capacity = 0;

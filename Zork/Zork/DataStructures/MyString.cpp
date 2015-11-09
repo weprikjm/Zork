@@ -330,11 +330,6 @@ const char MyString::operator[](uint index)
 
 
 
-
-
-
-
-
 void MyString::Clear()
 {
 	str[0] = '\0';

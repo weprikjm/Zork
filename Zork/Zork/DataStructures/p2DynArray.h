@@ -151,7 +151,7 @@ public:
 	}
 
 	// Utils
-	unsigned int GetCapacity() const
+	uint GetCapacity() const
 	{
 		return mem_capacity;
 	}
