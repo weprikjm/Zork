@@ -95,7 +95,7 @@ void GameManager::CleanUp()
 
 }
 
-
+//Needs further work
 bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arrayToFill)
 {
 	int j = 0;
