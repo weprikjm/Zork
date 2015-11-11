@@ -135,11 +135,6 @@ bool GameManager::CheckCommand()
 
 
 
-
-
-
-
-
 			ret = commandExit();
 
 			if (!roomChange && !ret)
