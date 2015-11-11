@@ -100,7 +100,7 @@ bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arr
 {
 	int j = 0;
 	MyString* tmpStr;
-	tmpStr = new MyString;
+	tmpStr = new MyString(32);
 
 	for (int i = 0; i < commandDef.Count(); i++)
 	{
@@ -114,7 +114,7 @@ bool GameManager::DivideInWords(MyString& commandDef, p2DynArray<MyString*>& arr
 			arrayToFill.PushBack(tmpStr);
 		else
 		{
-			tmpStr[j] = (char)commandDef[i];
+			tmpStr[j] = commandDef[i];
 			j++;
 		}
 			

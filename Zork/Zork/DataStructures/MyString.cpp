@@ -258,6 +258,16 @@ const uint MyString::GetCapacity()const
 }
 
 
+const char MyString::operator=(const char mStr)
+{
+	if (mStr != NULL)
+	{
+		return mStr;
+	}
+
+
+}
+
 
 const MyString& MyString::operator=(const MyString& mStr)
 {
@@ -315,7 +325,7 @@ int MyString::GetChunkSizeNeeded(int size)const
 	return finalInt;
 }
 
-int MyString::Count()
+int MyString::Count()const
 {
 	return strlen(str);
 }
@@ -327,6 +337,11 @@ const char MyString::operator[](uint index)
 
 }
 
+const char MyString::operator[](uint index) const
+{
+	if(index < Count())
+		return str[index];
+}
 
 
 
