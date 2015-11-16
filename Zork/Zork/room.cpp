@@ -13,6 +13,17 @@ Room::~Room()
 
 }
 
+bool Room::FindItem(const char* nameObject)
+{
+	for (int i = 0; i < items.Count(); i++)
+	{
+		if (items[i]->GetName() == nameObject)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 const char* Room::GetName()
 {

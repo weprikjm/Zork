@@ -38,6 +38,7 @@ public:
 	p2DynArray<Answers*> answers;
 	p2DynArray<item*> items;
 	
+	bool FindItem(const char* nameObject);
 
 	~Room();
 };

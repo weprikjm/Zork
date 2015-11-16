@@ -265,7 +265,6 @@ const char MyString::operator=(const char mStr)
 		return mStr;
 	}
 
-
 }
 
 

@@ -260,14 +260,13 @@ bool GameManager::PickingItems()
 	bool ret = false;
 	if (commandDef == "pick glimmering orb" || commandDef == "pick orb" || commandDef == "Pick Orb")
 	{
-		if (currentRoom->items.Count() != 0 && !strcmp(currentRoom->items[0]->GetName(), "glimmering orb"))//If item list of the room is empty player doesn't pick the object
+		if (currentRoom->items.Count() != 0 && !currentRoom->FindItem("glimmering orb"))//If item list of the room is empty player doesn't pick the object
 		{
 			item* itemToRemove;
 			currentRoom->items.Pop(itemToRemove);
 			PC->inventory.PushBack(itemToRemove);
 			printf("\nYou now have %s\n\n", itemToRemove->GetName());
 			ret = true;
-
 		}
 		else if (PC->inventory.Count() == 0 && currentRoom->items.Count() == 0)
 		{
