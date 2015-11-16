@@ -131,8 +131,8 @@ bool GameManager::CheckCommand()
 {
 			bool ret = false;
 			bool strings = false;
-			strings = DivideInWords(commandDef,arrayCommand);
-
+			//strings = DivideInWords(commandDef,arrayCommand);
+			bool objects = false;
 
 
 			ret = commandExit();
@@ -149,13 +149,15 @@ bool GameManager::CheckCommand()
 				roomChange = Room5CheckCommand();
 			if (!roomChange && !ret)
 				roomChange = Room6CheckCommand();
-			if (!roomChange && !ret)
-				ret = PickingItems();
-			if (!roomChange && !ret)
-				ret = DropingItems();
+			
+			if (!roomChange && !ret && !objects)
+				objects = PickingItems();
+			if (!roomChange && !ret && !objects)
+				objects = DropingItems();
+			if (!roomChange && !ret && !objects)
+				objects = ShowInventory();
 
-
-			if (!roomChange && !ret)
+			if (!roomChange && !ret && !objects)
 				printf("\n\nNo such action can be done");
 
 
@@ -164,7 +166,18 @@ bool GameManager::CheckCommand()
 
 }
 
+bool GameManager::ShowInventory()
+{
+	bool ret = false;
 
+	if (commandDef == "Show Inventory" || commandDef == "show inventory")
+	{
+		ret = true;
+		PC->PrintInventory();
+	}
+
+	return ret;
+}
 
 bool GameManager::Room1CheckCommand()
 {
@@ -288,7 +301,7 @@ bool GameManager::DropingItems()
 		else
 		{
 			printf("\n\nYou cannot drop what you don't have\n\n");
-
+			ret = true;
 		}
 	}
 
@@ -317,21 +330,15 @@ void GameManager::PrintRoom(Room* _currentRoom)
 
 
 
-
-
-
 	for (int i=0; i <_currentRoom->onceDescription.Count(); i++)
 	{
 		printf("%c", _currentRoom->onceDescription[i]);
 		sleep(10);
-
 	}
 
 
 
-
 	printf("\n");
-
 	printf("\n");
 
 
@@ -340,13 +347,9 @@ void GameManager::PrintRoom(Room* _currentRoom)
 	{
 		printf("%c", _currentRoom->Description[i]);
 		sleep(5);
-
 	}
 	
 
 	printf("\n");
 	printf("\n");
-
-
-
 }

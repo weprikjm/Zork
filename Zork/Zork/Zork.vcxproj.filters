@@ -45,6 +45,9 @@
     <ClCompile Include="DataStructures\MyString.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="room.h">

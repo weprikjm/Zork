@@ -32,7 +32,7 @@ public:
 	bool Room6CheckCommand();
 
 
-
+	bool ShowInventory();
 	bool PickingItems();
 	bool DropingItems();
 

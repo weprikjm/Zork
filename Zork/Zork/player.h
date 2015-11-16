@@ -10,6 +10,9 @@ class player : public entity
 public:
 	player(const char* _name) : entity(_name){}
 	player(){}
+
+	void PrintInventory();
+
 	p2DynArray<item*> inventory;
 
 
